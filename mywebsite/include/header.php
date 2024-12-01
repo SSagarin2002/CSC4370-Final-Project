@@ -1,10 +1,9 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
-    // Set secure session parameters
-    ini_set('session.use_only_cookies', 1); // Use cookies only for session ID
-    ini_set('session.cookie_secure', 0);    // Enable if using HTTPS
-    ini_set('session.cookie_httponly', 1);  // Prevent access to session cookie via JavaScript
-    ini_set('session.cookie_lifetime', 0);  // Session expires on browser close
+    ini_set('session.use_only_cookies', 1); 
+    ini_set('session.cookie_secure', 0);    
+    ini_set('session.cookie_httponly', 1); 
+    ini_set('session.cookie_lifetime', 0);  
     session_start();
 }
 ?>

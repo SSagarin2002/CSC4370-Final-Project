@@ -7,10 +7,8 @@ include '../db.php';
     <?php header('Location: login.php'); exit; ?>
 <?php endif; ?>
 <?php
-// Fetch the content ID
 $id = $_GET['id'] ?? null;
 
-// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $description = $_POST['description'];
@@ -21,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-// Fetch content for editing
 $stmt = $pdo->prepare("SELECT * FROM content WHERE id = ? AND user_id = ?");
 $stmt->execute([$id, $_SESSION['user_id']]);
 $item = $stmt->fetch();

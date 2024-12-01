@@ -2,9 +2,8 @@
 
 
 <?php
-include '../db.php';             // Include the database connection
+include '../db.php';      
 
-// Fetch all content from the database
 try {
     $stmt = $pdo->prepare("SELECT title, description FROM content ORDER BY created_at DESC");
     $stmt->execute();

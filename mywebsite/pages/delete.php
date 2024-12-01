@@ -9,7 +9,6 @@ include '../db.php';
 <?php
 $id = $_GET['id'] ?? null;
 
-// Delete the content if it belongs to the logged-in user
 $stmt = $pdo->prepare("DELETE FROM content WHERE id = ? AND user_id = ?");
 $stmt->execute([$id, $_SESSION['user_id']]);
 

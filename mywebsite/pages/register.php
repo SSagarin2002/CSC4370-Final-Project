@@ -3,7 +3,6 @@
 <?php
 include '../db.php';
 
-// Initialize an empty error message
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -11,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $email = $_POST['email'];
 
-    // Check if the username already exists
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE username = ?");
     $stmt->execute([$username]);
     $usernameExists = $stmt->fetchColumn() > 0;
@@ -19,10 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($usernameExists) {
         $error = "The username '$username' is already taken. Please try a different one.";
     } else {
-        // Insert the new user into the database
         $stmt = $pdo->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
         $stmt->execute([$username, $password, $email]);
-        header('Location: login.php'); // Redirect to the login page after successful registration
+        header('Location: login.php'); 
         exit;
     }
 }
@@ -38,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button type="submit">Register</button>
 </form>
 
-<!-- Display error message if username is taken -->
 <?php if ($error): ?>
     <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
 <?php endif; ?>

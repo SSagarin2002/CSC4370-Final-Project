@@ -1,6 +1,3 @@
-// Add client-side form validation and interactivity here
-
-// Validate forms before submission
 document.addEventListener('DOMContentLoaded', function () {
     const forms = document.querySelectorAll('form');
 
@@ -20,19 +17,18 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             if (!isValid) {
-                e.preventDefault(); // Prevent form submission
+                e.preventDefault(); 
             }
         });
     });
 });
 
-// Optional: Add a confirmation prompt before deleting content
 const deleteLinks = document.querySelectorAll('a[href*="delete.php"]');
 
 deleteLinks.forEach(link => {
     link.addEventListener('click', function (e) {
         if (!confirm("Are you sure you want to delete this item?")) {
-            e.preventDefault(); // Prevent navigation to delete action
+            e.preventDefault(); 
         }
     });
 });
